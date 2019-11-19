@@ -1,0 +1,14 @@
+{
+  "name": "serverws",
+  "version": "1.0.0",
+  "description": "Servidor web sockect para olimpiada del saber",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mavc",
+  "license": "ISC",
+  "dependencies": {
+    "websocket": "^1.0.30"
+  }
+}
