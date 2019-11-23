@@ -46,7 +46,7 @@ wsServer.on('request', function(request) {
                 if(myRoom.answer.isOpen){
                     sendConnRoom(myRoom, connection, {op: 2, data: {is: true}});
                 }
-                updateGuest();
+                updateGuest(myRoom);
                 break;
             case 2:
                 updateQuestion(myRoom, connection, msgJson.data.q);
@@ -57,7 +57,7 @@ wsServer.on('request', function(request) {
                 break;
             case 4:
                 votedGuest(myRoom, connection, msgJson.data);
-                updateGuest();
+                updateGuest(myRoom);
                 break;
             case 5:
                 broadCastRomCancelVoted(myRoom);
@@ -221,7 +221,9 @@ function closeRoom(myRoom){
     console.log('Se ha finalizo la sala.');
 }
 
-function updateGuest(){
+function updateGuest(myRoom){
+    console.log(myRoom.indexParent == null);
+    console.log("Actualizacionde datos");
     if(myRoom.indexParent == null) return;
     sendConnRoom(myRoom, myRoom.indexParent, {op: 8, data: {
         c: myRoom.indexChild.length,
